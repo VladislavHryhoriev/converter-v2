@@ -1,0 +1,69 @@
+:root {
+	--bg: #22181c;
+	--areabg: #312f2f;
+	--areacolor: #f6e8ea;
+	--btnbg: #312f2f;
+	--btnbgactive: #ef626c;
+	--btncolor: #ef626c;
+	--btncoloractive: #f6e8ea;
+}
+
+* {
+	font-family: Tahoma;
+}
+
+body {
+	background: var(--bg);
+	user-select: none;
+}
+
+textarea {
+	width: 100%;
+	height: 100%;
+	background: var(--areabg);
+	color: var(--areacolor);
+	resize: none;
+}
+
+textarea:focus {
+	outline: none;
+}
+
+.buttons {
+	display: flex;
+}
+
+.radio-button {
+	display: inline-block;
+	padding: 0.5em;
+	background: var(--btnbg);
+	color: var(--btncolor);
+}
+
+.radio-button {
+}
+
+.radio {
+	display: none;
+}
+
+#result:hover {
+	cursor: pointer;
+}
+
+.textareas {
+	display: flex;
+	flex-direction: column;
+	height: 80vh;
+}
+
+.label {
+	cursor: pointer;
+	display: block;
+	padding: 1em;
+}
+
+.radio:checked + .label {
+	background: var(--btnbgactive);
+	color: var(--btncoloractive);
+}
