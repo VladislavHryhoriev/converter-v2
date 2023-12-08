@@ -1,5 +1,5 @@
 // eslint-disable-next-line react/prop-types
-const RadioButton = ({ id, title, onClick }) => {
+const RadioButton = ({ id, title, setSelectedRadio }) => {
 	return (
 		<>
 			<div className='radio-button'>
@@ -9,9 +9,12 @@ const RadioButton = ({ id, title, onClick }) => {
 					id={id}
 					name='siteName'
 					value={id}
-					onChange={onClick}
+					onChange={({ target }) => setSelectedRadio(target.value)}
 				/>
-				<label onClick={onClick} className='label' htmlFor={id}>
+				<label
+					onClick={({ target }) => setSelectedRadio(target.value)}
+					className='label'
+					htmlFor={id}>
 					{title}
 				</label>
 			</div>

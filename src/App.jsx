@@ -1,88 +1,54 @@
 import { useEffect, useRef, useState } from 'react';
-import copyText from './lib/copy-text';
 import './App.css';
 import RadioButton from './components/radio-button';
+import copyText from './lib/copy-text';
+import { selectedRadioHandler } from './lib/selectedRadioHandler';
+
+const buttons = {
+	biha: {
+		id: 'biom-intertool-horozelectric-akfix',
+		text: 'Biom.ua / Intertool / Horozelectric / Akfix',
+	},
+	horozua: {
+		id: 'horozua',
+		text: 'Horozua',
+	},
+	fivewatt: {
+		id: 'fivewatt',
+		text: '5watt',
+	},
+};
 
 function App() {
 	const [text, setText] = useState('');
+	const [selectedRadio, setSelectedRadio] = useState(0);
 	const resultRef = useRef();
 
-	const buttons = {
-		bih: {
-			id: 'biom-intertool-horozelectric',
-			text: 'Biom.ua / Intertool / Horozelectric',
-		},
-		horozua: {
-			id: 'horozua',
-			text: 'Horoz.ua',
-		},
-	};
-
-	const compilateInput = ({ target }) => {
-		// targets.text.oninput = null;
-
-		//
-
-		// 	targets.text.oninput = handler;
-		// 	target.onclick = handler;
-		// }
-
-		// if (target.value === 'horozua') {
-		// 	const handler = () => {
-		// 		text = targets.text.value;
-		// 		const result = text
-		// 			.trim()
-		// 			.split('\n')
-		// 			.map((item) => {
-		// 				if (item == '') return item.replace('', '\n');
-		// 				if (item != '') return item.replace(':', ': ');
-		// 				return item;
-		// 			})
-		// 			.join('');
-
-		// 		targets.result.value = 'Характеристики\n\n' + result;
-		// 	};
-		// 	targets.text.oninput = handler;
-		// 	target.onclick = handler;
-		// }
-
-		setText(target.value);
-	};
-
 	const compilate = ({ target }) => {
-		let newText = '';
-		console.log(text);
-		if (target.value === 'biom-intertool-horozelectric') {
-			newText
-				.trim()
-				.split('\n')
-				.map((item) => {
-					if (item.includes(':')) return item.replace('\t', '').trim();
-					return item.replace('\t', ': ').trim();
-				})
-				.filter((item) => item.toLowerCase() !== 'характеристики')
-				.join('\n');
-
-			resultRef.value = 'Характеристики\n\n' + newText;
-		}
-
 		setText(target.value);
 	};
 
-	// useEffect(() => {}, [text]);
+	useEffect(() => {
+		selectedRadioHandler(selectedRadio, text, resultRef, buttons);
+	}, [text, selectedRadio]);
 
 	return (
 		<>
 			<div className='buttons'>
 				<RadioButton
-					onClick={compilate}
-					id={buttons.bih.id}
-					title={buttons.bih.text}
+					setSelectedRadio={setSelectedRadio}
+					id={buttons.biha.id}
+					title={buttons.biha.text}
 				/>
 				<RadioButton
-					onClick={compilate}
+					setSelectedRadio={setSelectedRadio}
 					id={buttons.horozua.id}
 					title={buttons.horozua.text}
+				/>
+				<RadioButton
+					setSelectedRadio={setSelectedRadio}
+					id={buttons.fivewatt.id}
+					title={buttons.fivewatt.text}
 				/>
 			</div>
 			<div className='textareas'>
