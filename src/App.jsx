@@ -21,7 +21,7 @@ const buttons = {
 
 function App() {
 	const [text, setText] = useState('');
-	const [selectedRadio, setSelectedRadio] = useState(0);
+	const [selectedRadio, setSelectedRadio] = useState('');
 	const resultRef = useRef();
 
 	const compilate = ({ target }) => {
@@ -29,6 +29,7 @@ function App() {
 	};
 
 	useEffect(() => {
+		console.log(selectedRadio);
 		selectedRadioHandler(selectedRadio, text, resultRef, buttons);
 	}, [text, selectedRadio]);
 

@@ -1,6 +1,11 @@
-export const selectedRadioHandler = (selectedRadio, text, resultRef) => {
+export const selectedRadioHandler = (
+	selectedRadio,
+	text,
+	resultRef,
+	buttons
+) => {
 	switch (selectedRadio) {
-		case 'biom-intertool-horozelectric-akfix': {
+		case buttons.biha.id: {
 			const result = text
 				.trim()
 				.replace(/[\n]+/gi, '\n')
@@ -27,7 +32,7 @@ export const selectedRadioHandler = (selectedRadio, text, resultRef) => {
 			resultRef.current.value = 'Характеристики\n\n' + result;
 			break;
 		}
-		case 'horozua': {
+		case buttons.horozua.id: {
 			const result = text
 				.trim()
 				.split('\n')
@@ -42,13 +47,11 @@ export const selectedRadioHandler = (selectedRadio, text, resultRef) => {
 			break;
 		}
 
-		case '5watt': {
+		case buttons.fivewatt.id: {
 			const result = text
 				.trim()
 				.split('\n')
 				.map((item) => {
-					if (item == '') return item.replace('', '\n');
-					if (item != '') return item.replace(':', ': ');
 					return item;
 				})
 				.join('');
@@ -56,9 +59,5 @@ export const selectedRadioHandler = (selectedRadio, text, resultRef) => {
 			resultRef.current.value = 'Характеристики\n\n' + result;
 			break;
 		}
-
-		default:
-			resultRef.current.value = 'Ошибка';
-			break;
 	}
 };
