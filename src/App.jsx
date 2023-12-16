@@ -29,7 +29,6 @@ function App() {
 	};
 
 	useEffect(() => {
-		console.log(selectedRadio);
 		selectedRadioHandler(selectedRadio, text, resultRef, buttons);
 	}, [text, selectedRadio]);
 
