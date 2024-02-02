@@ -59,5 +59,31 @@ export const selectedRadioHandler = (
 			resultRef.current.value = 'Характеристики\n\n' + result;
 			break;
 		}
+
+		case buttons.addSpaces.id: {
+			const result = text
+				.trim()
+				.split(' ')
+				.map((item) => {
+					if (
+						item.charAt(0) === item.charAt(0).toUpperCase() &&
+						!+item.charAt(0)
+					) {
+						return '\n' + item;
+					}
+
+					return item;
+				})
+				.filter(
+					(word) =>
+						word.toLowerCase() !== 'пользовательские характеристики' &&
+						word.toLowerCase() !== 'основные' &&
+						word.toLowerCase() !== 'характеристики'
+				)
+				.join(' ');
+
+			resultRef.current.value = 'Характеристики\n\n' + result;
+			break;
+		}
 	}
 };

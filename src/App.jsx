@@ -17,6 +17,10 @@ const buttons = {
 		id: 'fivewatt',
 		text: '5watt',
 	},
+	addSpaces: {
+		id: 'addSpaces',
+		text: 'Перенос по характеристикам',
+	},
 };
 
 function App() {
@@ -49,6 +53,11 @@ function App() {
 					setSelectedRadio={setSelectedRadio}
 					id={buttons.fivewatt.id}
 					title={buttons.fivewatt.text}
+				/>
+				<RadioButton
+					setSelectedRadio={setSelectedRadio}
+					id={buttons.addSpaces.id}
+					title={buttons.addSpaces.text}
 				/>
 			</div>
 			<div className='textareas'>
