@@ -69,7 +69,9 @@ export const selectedRadioHandler = (
 					.trim() || '';
 
 			resultRef.current.value =
-				'Характеристики\n\n' + result + '\n\n* Продаємо планками по два метри';
+				'Характеристики\n\n' +
+				result +
+				'\n\n* Продаем планками по два метра. Цена указана за 1 метр';
 			break;
 		}
 	}
