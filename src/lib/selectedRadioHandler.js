@@ -61,28 +61,15 @@ export const selectedRadioHandler = (
 		}
 
 		case buttons.addSpaces.id: {
-			const result = text
-				.trim()
-				.split(' ')
-				.map((item) => {
-					if (
-						item.charAt(0) === item.charAt(0).toUpperCase() &&
-						!+item.charAt(0)
-					) {
-						return '\n' + item;
-					}
+			const result =
+				text
+					.match(/[А-ЯA-Z][А-Яа-я\w\d\s]*:\s?[А-ЯA-Z]?[а-я\w\d\s]*[а-я\w\d]/gm)
+					?.join('\n')
+					.replace('Характеристики', '')
+					.trim() || '';
 
-					return item;
-				})
-				.filter(
-					(word) =>
-						word.toLowerCase() !== 'пользовательские характеристики' &&
-						word.toLowerCase() !== 'основные' &&
-						word.toLowerCase() !== 'характеристики'
-				)
-				.join(' ');
-
-			resultRef.current.value = 'Характеристики\n\n' + result;
+			resultRef.current.value =
+				'Характеристики\n\n' + result + '\n\n* Продаємо планками по два метри';
 			break;
 		}
 	}

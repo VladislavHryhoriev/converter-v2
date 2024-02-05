@@ -19,7 +19,7 @@ const buttons = {
 	},
 	addSpaces: {
 		id: 'addSpaces',
-		text: 'Перенос по характеристикам',
+		text: 'Формат по характеристикам',
 	},
 };
 
