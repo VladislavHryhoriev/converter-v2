@@ -16,15 +16,18 @@ export const selectedRadioHandler = (
 					} else {
 						item = item.replace(/[\s]+\t|\t/gi, ' ');
 					}
+
 					if (item.includes('Подробнее')) {
 						item = item.split(' ').slice(0, -2).join(' ');
 					}
+
 					return item;
 				})
 				.filter(
 					(word) =>
 						word.toLowerCase() !== 'пользовательские характеристики' &&
 						word.toLowerCase() !== 'основные' &&
+						word.toLowerCase() !== 'объем' &&
 						word.toLowerCase() !== 'характеристики'
 				)
 				.join('\n');
