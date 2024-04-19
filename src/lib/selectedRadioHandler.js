@@ -72,10 +72,7 @@ export const selectedRadioHandler = (
 					.replace('Характеристики', '')
 					.trim() || '';
 
-			resultRef.current.value =
-				'Характеристики\n\n' +
-				result +
-				'\n\n* Продаем планками по два метра. Цена указана за 1 метр';
+			resultRef.current.value = 'Характеристики\n\n' + result;
 			break;
 		}
 	}
